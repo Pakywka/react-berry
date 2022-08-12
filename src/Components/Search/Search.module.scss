@@ -1,0 +1,52 @@
+@use '../../scss/util/' as *;
+
+.root {
+    position: relative;
+    margin: 0 auto;
+
+    @include breakpoint-down(large) {
+        order: 1;
+        width: 100%;
+    }
+
+    .icon {
+        position: absolute;
+        top: rem(12);
+        left: rem(12);
+        width: rem(22);
+        height: rem(22);
+        opacity: 0.3;
+    }
+
+    .input {
+        border: rem(1) solid hsla(0, 0%, 0%, 0.1);
+        padding: rem(12) rem(20);
+        padding-left: rem(40);
+        max-width: rem(300);
+        width: 100%;
+        border-radius: rem(10);
+        transition: all 0.15s ease-in-out;
+
+        @include breakpoint-down(medium) {
+            max-width: unset;
+        }
+
+        &:focus {
+            border-color: hsla(0, 0%, 0%, 0.2);
+        }
+    }
+
+    .clearIcon {
+        position: absolute;
+        top: rem(15);
+        right: rem(15);
+        width: rem(18);
+        height: rem(18);
+        opacity: 0.3;
+        cursor: pointer;
+
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+}

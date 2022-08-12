@@ -1,0 +1,38 @@
+@use '../util/' as *;
+
+.categories {
+    overflow: hidden;
+
+    ul {
+        display: flex;
+        gap: rem(10);
+        overflow: auto;
+
+        li {
+            background-color: #f9f9f9;
+            padding: em(13) em(30);
+            border-radius: rem(30);
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.1s ease-in-out;
+            @include noselect();
+
+            @include breakpoint-down(small) {
+                font-size: rem(14);
+            }
+
+            &:hover {
+                background-color: darken(#f9f9f9, 2%);
+            }
+
+            &:active {
+                background-color: darken(#f9f9f9, 5%);
+            }
+
+            &.active {
+                background-color: #282828;
+                color: #fff;
+            }
+        }
+    }
+}

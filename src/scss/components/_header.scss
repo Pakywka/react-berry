@@ -1,0 +1,43 @@
+@use '../util/' as *;
+
+.header {
+    border-bottom: 1px solid var(--gray-line);
+    padding: clamp(rem(20), rem(8) + 3vw, rem(40)) 0;
+
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: rem(20);
+    }
+
+    &__logo {
+        display: flex;
+        gap: rem(15);
+
+        img {
+            width: rem(50);
+            height: rem(50);
+        }
+
+        .logo__text {
+            @include breakpoint-down(small) {
+                display: none;
+            }
+
+            h1 {
+                color: #181818;
+                font-size: rem(24);
+                line-height: 1.1;
+                letter-spacing: 1%;
+                text-transform: uppercase;
+                font-weight: 800;
+            }
+
+            p {
+                color: #7b7b7b;
+            }
+        }
+    }
+}

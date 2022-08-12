@@ -1,0 +1,40 @@
+@use '../../scss/util' as *;
+
+.root {
+    display: flex;
+    gap: rem(20);
+    padding-top: rem(40);
+
+    @include breakpoint-down(small) {
+        justify-content: center;
+    }
+
+    li {
+        a {
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: rem(40);
+            height: rem(40);
+            border: 1px solid var(--purple);
+            border-radius: rem(30);
+            cursor: pointer;
+            transition: all 0.15s ease-in-out;
+            color: var(--purple);
+
+            &:hover {
+                background-color: var(--purple);
+                color: hsl(0, 0%, 100%);
+            }
+        }
+    }
+
+    :global {
+        .selected {
+            a {
+                background-color: var(--purple);
+                color: hsl(0, 0%, 100%);
+            }
+        }
+    }
+}

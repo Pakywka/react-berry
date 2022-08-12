@@ -1,0 +1,30 @@
+.root {
+  display: flex;
+  gap: 1.25rem;
+  padding-top: 2.5rem;
+}
+@media (max-width: 35.99875em) {
+  .root {
+    justify-content: center;
+  }
+}
+.root li a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 1px solid var(--purple);
+  border-radius: 1.875rem;
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+  color: var(--purple);
+}
+.root li a:hover {
+  background-color: var(--purple);
+  color: hsl(0deg, 0%, 100%);
+}
+.root :global .selected a {
+  background-color: var(--purple);
+  color: hsl(0deg, 0%, 100%);
+}/*# sourceMappingURL=Pagination.module.css.map */

@@ -1,0 +1,156 @@
+@use '../util/' as *;
+
+.button {
+    display: flex;
+    align-items: center;
+    gap: rem(5);
+    background-color: var(--purple);
+    border-radius: rem(30);
+    padding: em(10) em(20);
+    min-width: 100px;
+    text-align: center;
+    font-size: rem(16);
+    font-weight: 600;
+
+    @include breakpoint-down(small) {
+        font-size: rem(14);
+    }
+    cursor: pointer;
+    transition: background-color $duration ease-in-out, border-color $duration ease-in-out;
+    border: 1px solid transparent;
+    @include noselect();
+
+    &,
+    span {
+        color: #fff;
+    }
+
+    i,
+    span,
+    path,
+    svg {
+        transition: all $duration ease-in-out;
+    }
+
+    &:hover {
+        background-color: darken(rgb(106, 109, 205), 8%);
+    }
+
+    &:active {
+        background-color: darken(rgb(106, 109, 205), 12%);
+        transform: translateY(1px);
+    }
+
+    &--circle {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 32px;
+        height: 32px;
+        min-width: 32px;
+        padding: 0;
+        border-width: 2px;
+    }
+
+    &--black {
+        background-color: var(--black);
+
+        &:hover,
+        &:active {
+            background-color: lighten($color: #232323, $amount: 10);
+        }
+    }
+
+    &--outline {
+        background-color: #fff;
+        border-color: var(--purple);
+
+        &,
+        span {
+            color: var(--purple);
+        }
+
+        svg {
+            path {
+                fill: var(--purple);
+            }
+        }
+
+        &:hover {
+            background-color: var(--purple);
+
+            &,
+            span {
+                color: #fff;
+            }
+
+            svg {
+                path {
+                    fill: #fff;
+                }
+            }
+        }
+
+        &:active {
+            background-color: darken(rgb(106, 109, 205), 8%);
+        }
+    }
+
+    &__delimiter {
+        width: 1px;
+        height: 25px;
+        background-color: rgba(255, 255, 255, 0.25);
+        margin-left: 14px;
+        margin-right: 14px;
+    }
+
+    &--add {
+        svg {
+            margin-right: 2px;
+        }
+
+        span {
+            font-weight: 600;
+            font-size: 16px;
+
+            @include breakpoint-down(medium) {
+                font-size: rem(14);
+            }
+        }
+
+        &:hover {
+            i {
+                background-color: #fff;
+                color: var(--purple);
+            }
+        }
+
+        i {
+            display: inline-block;
+            border-radius: 30px;
+            background-color: var(--purple);
+            color: #fff;
+            font-weight: 600;
+            width: 22px;
+            height: 22px;
+            font-style: normal;
+            font-size: 13px;
+            line-height: 22px;
+            position: relative;
+            top: 0;
+            left: 3px;
+        }
+    }
+
+    &--cart {
+        display: flex;
+        align-items: center;
+        line-height: em(23);
+        padding: em(12) em(25);
+
+        svg {
+            margin-right: 8px;
+            margin-bottom: 1px;
+        }
+    }
+}

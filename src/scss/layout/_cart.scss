@@ -1,0 +1,300 @@
+@use '../util' as *;
+
+.cart {
+    &__top {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: rem(20);
+        margin-bottom: rem(10);
+    }
+
+    .content__title {
+        display: flex;
+        align-items: center;
+
+        svg {
+            position: relative;
+            top: -2px;
+            width: 30px;
+            height: 30px;
+            margin-right: 10px;
+
+            path {
+                stroke: var(--black);
+                stroke-width: 1.9;
+            }
+        }
+    }
+
+    &__clear {
+        display: flex;
+        align-items: center;
+        gap: rem(7);
+        cursor: pointer;
+        @include noselect();
+
+        button {
+            color: #b6b6b6;
+            font-size: rem(16);
+        }
+
+        button,
+        svg,
+        path {
+            transition: all $duration ease-in-out;
+        }
+
+        &:hover {
+            svg {
+                path {
+                    stroke: darken($color: #b6b6b6, $amount: 50);
+                }
+            }
+
+            button {
+                color: darken($color: #b6b6b6, $amount: 50);
+            }
+        }
+    }
+
+    &__item {
+        display: grid;
+        grid-template-columns: 1fr 4fr 1.3fr 3.3fr 0.4fr;
+        gap: rem(15);
+        width: 100%;
+        border-top: 1px solid var(--gray-line);
+        border-bottom: 1px solid var(--gray-line);
+        padding: rem(30) 0;
+
+        @include breakpoint-down(small) {
+            grid-template-columns: none;
+            grid-template-areas:
+                'A B B'
+                'C D F';
+        }
+
+        &-img {
+            display: flex;
+            align-items: center;
+            @include breakpoint-down(small) {
+                grid-area: A;
+                justify-content: center;
+            }
+
+            img {
+                width: rem(80);
+            }
+        }
+
+        &-info {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            @include breakpoint-down(small) {
+                grid-area: B;
+                text-align: left;
+            }
+
+            h3 {
+                line-height: 27px;
+                letter-spacing: 0.01em;
+            }
+
+            p {
+                font-size: 18px;
+                color: #8d8d8d;
+            }
+        }
+
+        &-count {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: rem(8);
+            @include breakpoint-down(small) {
+                grid-area: C;
+            }
+
+            &-minus {
+                svg {
+                    path:first-of-type {
+                        display: none;
+                    }
+                }
+            }
+
+            b {
+                font-size: 22px;
+            }
+        }
+
+        &-price {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            @include breakpoint-down(small) {
+                grid-area: D;
+            }
+
+            b {
+                font-weight: bold;
+                font-size: 22px;
+                letter-spacing: 0.01em;
+            }
+        }
+
+        &-remove {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            @include breakpoint-down(small) {
+                grid-area: F;
+            }
+
+            .button {
+                border-color: darken($color: #f6f6f6, $amount: 10);
+            }
+
+            svg {
+                transform: rotate(45deg);
+
+                path {
+                    fill: darken($color: #f6f6f6, $amount: 15);
+                }
+            }
+
+            .button {
+                svg {
+                    width: 11.5px;
+                    height: 11.5px;
+                    position: relative;
+                }
+
+                &:hover,
+                &:active {
+                    border-color: darken($color: #f6f6f6, $amount: 80);
+                    background-color: darken($color: #f6f6f6, $amount: 80);
+                }
+            }
+        }
+    }
+
+    &__bottom {
+        margin: rem(50) 0;
+        @include breakpoint-down(medium) {
+            margin: rem(25) 0;
+        }
+
+        &-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: rem(10);
+
+            @include breakpoint-down(small) {
+                flex-direction: column;
+            }
+
+            span {
+                font-size: 22px;
+
+                @include breakpoint-down(medium) {
+                    font-size: rem(20);
+                }
+
+                &:last-of-type {
+                    b {
+                        color: var(--purple);
+                    }
+                }
+            }
+        }
+
+        &-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: rem(20);
+            margin-top: 40px;
+
+            @include breakpoint-down(small) {
+                justify-content: center;
+            }
+
+            .go-back-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: rem(210);
+
+                border-color: darken($color: #f6f6f6, $amount: 10);
+
+                span {
+                    color: darken($color: #f6f6f6, $amount: 20);
+                    font-weight: 500;
+                    font-weight: 600;
+                }
+
+                &:hover {
+                    background-color: darken($color: #f6f6f6, $amount: 90);
+                    border-color: darken($color: #f6f6f6, $amount: 90);
+
+                    span {
+                        color: var(--gray-line);
+                    }
+                }
+
+                svg {
+                    margin-right: 12px;
+
+                    path {
+                        fill: transparent;
+                        stroke-width: 2;
+                    }
+                }
+            }
+
+            .pay-btn {
+                width: rem(210);
+                padding: rem(16);
+            }
+        }
+    }
+
+    &--empty {
+        margin: 0 auto;
+        max-width: rem(560);
+        text-align: center;
+
+        h2 {
+            margin-bottom: rem(15);
+        }
+
+        p {
+            font-size: rem(18);
+            line-height: 145.4%;
+            letter-spacing: 0.01em;
+            color: #777777;
+        }
+
+        icon {
+            position: relative;
+            top: 2px;
+        }
+
+        img {
+            display: block;
+            width: rem(300);
+            margin: rem(45) auto rem(60);
+        }
+
+        .button--black {
+            padding: rem(12) rem(14);
+            width: rem(230);
+            margin: 0 auto;
+            justify-content: center;
+            font-weight: 600;
+            font-size: rem(18);
+        }
+    }
+}
