@@ -2,7 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import { addItem } from '../../redux/slices/cart/slice';
+import { addItem } from '../../redux/cart/slice';
 
 const typeNames: string[] = ['Type 1', 'Type 2'];
 

@@ -9,10 +9,10 @@ import ProductBlock from '../Components/ProductBlock';
 import Skeleton from '../Components/ProductBlock/Skeleton';
 import Pagination from '../Components/Pagination';
 
-import { selectFilter } from '../redux/slices/filter/selectors';
-import { setFilters } from '../redux/slices/filter/slice';
-import { selectProducts } from '../redux/slices/products/selectors';
-import { fetchProducts } from '../redux/slices/products/asyncActions';
+import { selectFilter } from '../redux/filter/selectors';
+import { setFilters } from '../redux/filter/slice';
+import { selectProducts } from '../redux/products/selectors';
+import { fetchProducts } from '../redux/products/asyncActions';
 import { useAppDispatch } from '../redux/store';
 
 const Home: React.FC = () => {
