@@ -5,6 +5,11 @@
     width: 100%;
     margin: 0 auto;
     text-align: center;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+        transform: scale(1.03);
+    }
 
     .image-wrapper {
         height: rem(260);

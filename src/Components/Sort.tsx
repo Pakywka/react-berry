@@ -1,31 +1,54 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { selectFilter } from '../redux/slices/filter/selectors';
+import { setSort } from '../redux/slices/filter/slice';
+import { Sort as SortType, SortPropertyEnum } from '../redux/slices/filter/types';
 
-import { selectFilter, setSort } from '../redux/slices/filterSlice';
-
-type sortType = {
+type SortItem = {
     name: string;
-    sortProperty: string;
+    sortProperty: SortPropertyEnum;
 };
 
-export const sortList: sortType[] = [
-    { name: 'популярности', sortProperty: 'rating' },
-    { name: 'возрастанию цены', sortProperty: '-price' },
-    { name: 'убыванию цены', sortProperty: 'price' },
-    { name: 'алфавиту', sortProperty: 'title' },
+type PopupClick = MouseEvent & {
+    path: Node[];
+};
+
+type SortPopupProps = {
+    value: SortType;
+};
+
+export const sortList: SortItem[] = [
+    { name: 'popularity', sortProperty: SortPropertyEnum.RATING },
+    { name: 'price ascending', sortProperty: SortPropertyEnum.PRICE_ASC },
+    { name: 'price descending', sortProperty: SortPropertyEnum.PRICE_DESC },
+    { name: 'alphabet', sortProperty: SortPropertyEnum.NAME },
 ];
 
-export const Sort: React.FC = () => {
+export const Sort: React.FC<SortPopupProps> = React.memo(({ value }) => {
     const { sort } = useSelector(selectFilter);
     const dispatch = useDispatch();
     const sortRef = React.useRef<HTMLDivElement>(null);
 
     const [open, setOpen] = React.useState(false);
 
-    const onClickListItem = (obj: object) => {
+    const onClickListItem = (obj: SortItem) => {
         dispatch(setSort(obj));
         setOpen(false);
     };
+
+    React.useEffect(() => {
+        const handleClickOutside = (event: MouseEvent) => {
+            const _event = event as PopupClick;
+
+            if (sortRef.current && !_event.path.includes(sortRef.current)) {
+                setOpen(false);
+            }
+        };
+
+        document.body.addEventListener('click', handleClickOutside);
+
+        return () => document.body.removeEventListener('click', handleClickOutside);
+    }, []);
 
     // React.useEffect(() => {
     //     const handleClickOutside = (event) => {
@@ -52,7 +75,7 @@ export const Sort: React.FC = () => {
                         fill="#2C2C2C"
                     />
                 </svg>
-                <b>Сортировка по:</b>
+                <b>Sorting by:</b>
                 <span onClick={() => setOpen(!open)}>{sort.name}</span>
             </div>
             {open && (
@@ -71,6 +94,6 @@ export const Sort: React.FC = () => {
             )}
         </div>
     );
-};
+});
 
 export default Sort;

@@ -1,8 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectFilter, setCategoryId } from '../redux/slices/filterSlice';
+import { selectFilter } from '../redux/slices/filter/selectors';
+import { setCategoryId } from '../redux/slices/filter/slice';
 
-const categories: string[] = ['Все', 'Лесные', 'Садовые', 'Орехи', 'Грибы', 'Набор'];
+const categories: string[] = ['All', 'Forest', 'Garden', 'Nuts', 'Mushrooms', 'Juice'];
 
 const Categories: React.FC = () => {
     const dispatch = useDispatch();

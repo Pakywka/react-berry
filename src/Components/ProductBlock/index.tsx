@@ -1,7 +1,8 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import { addItem } from '../../redux/slices/cartSlice';
+import { addItem } from '../../redux/slices/cart/slice';
 
 const typeNames: string[] = ['тонкое', 'традиционное'];
 
@@ -45,10 +46,12 @@ const ProductBlock: React.FC<ProductBlockProps> = ({
 
     return (
         <div className="berry-block">
-            <div className="image-wrapper">
-                <img className="berry-block__image" src={imageUrl} alt="berry" />
-            </div>
-            <h4 className="berry-block__title">{title}</h4>
+            <Link to={`/product/${id}`}>
+                <div className="image-wrapper">
+                    <img className="berry-block__image" src={imageUrl} alt="berry" />
+                </div>
+                <h4 className="berry-block__title">{title}</h4>
+            </Link>
             <div className="berry-block__selector">
                 <ul>
                     {types.map((typeId, i) => (

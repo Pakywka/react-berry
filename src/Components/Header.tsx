@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 
 import berryLogo from '../assets/img/berry-logo.png';
 import Search from './Search';
-import { selectCart } from '../redux/slices/cartSlice';
+import { selectCart } from '../redux/slices/cart/selectors';
 
 const Header: React.FC = () => {
     const location = useLocation();
@@ -20,7 +20,7 @@ const Header: React.FC = () => {
                         <img src={berryLogo} alt="berry logo" />
                         <div className="logo__text">
                             <h1>React berries</h1>
-                            <p>самые свежие ягоды</p>
+                            <p>the freshest berries</p>
                         </div>
                     </div>
                 </Link>

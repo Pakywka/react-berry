@@ -1,7 +1,7 @@
 import { useState, createContext } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
-import './css/app.css';
+import './scss/app.scss';
 
 import Header from './Components/Header';
 import Home from './pages/Home';

@@ -1,7 +1,7 @@
 import React from 'react';
 import debounce from 'lodash.debounce';
 import { useSelector, useDispatch } from 'react-redux';
-import { setSearchValue } from '../../redux/slices/filterSlice';
+import { setSearchValue } from '../../redux/slices/filter/slice';
 
 import styles from './Search.module.scss';
 
@@ -49,7 +49,7 @@ const Search = () => {
                 onChange={onChangeInput}
                 className={styles.input}
                 type="text"
-                placeholder="Поиск продукта ..."
+                placeholder="Search for a product ..."
             />
             {value && (
                 <svg
