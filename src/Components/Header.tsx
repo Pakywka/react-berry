@@ -28,7 +28,7 @@ const Header: React.FC = () => {
                 <div className="header__cart">
                     {location.pathname !== '/cart' && (
                         <Link to="/cart" className="button button--cart">
-                            <span>{totalPrice} ₽</span>
+                            <span>${totalPrice}</span>
                             <div className="button__delimiter"></div>
                             <svg
                                 width="18"

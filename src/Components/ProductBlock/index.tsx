@@ -75,7 +75,7 @@ const ProductBlock: React.FC<ProductBlockProps> = ({
                 </ul>
             </div>
             <div className="berry-block__bottom">
-                <h5 className="berry-block__price">от {price} ₽</h5>
+                <h5 className="berry-block__price">from ${price}0</h5>
                 <button onClick={onClickAdd} className="button button--outline button--add">
                     <svg
                         width="12"

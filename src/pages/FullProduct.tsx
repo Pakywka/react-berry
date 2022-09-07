@@ -33,7 +33,7 @@ const FullProduct: React.FC = () => {
             <div>
                 <img src={product.imageUrl} alt="" />
                 <h2>{product.title}</h2>
-                <h4>{product.price}</h4>
+                <h4>${product.price}</h4>
             </div>
         </div>
     );
