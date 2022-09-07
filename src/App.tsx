@@ -1,13 +1,18 @@
-import { useState, createContext } from 'react';
+import React, { Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 import './scss/app.scss';
 
 import Header from './Components/Header';
 import Home from './pages/Home';
-import Cart from './pages/Cart';
-import FullProduct from './pages/FullProduct';
-import NotFound from './pages/NotFound';
+
+import { Preloder } from './Components/Preloder';
+
+const Cart = React.lazy(() => import(/* webpackChunkName: "Cart" */ './pages/Cart'));
+const FullProduct = React.lazy(
+    () => import(/* webpackChunkName: "FullProduct" */ './pages/FullProduct'),
+);
+const NotFound = React.lazy(() => import(/* webpackChunkName: "NotFound" */ './pages/NotFound'));
 
 function App() {
     return (
@@ -16,10 +21,31 @@ function App() {
                 <Header />
                 <div className="content">
                     <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/cart" element={<Cart />} />
-                        <Route path="/product/:id" element={<FullProduct />} />
-                        <Route path="*" element={<NotFound />} />
+                        <Route path="" element={<Home />} />
+                        <Route
+                            path="cart"
+                            element={
+                                <Suspense fallback={<Preloder />}>
+                                    <Cart />
+                                </Suspense>
+                            }
+                        />
+                        <Route
+                            path="product/:id"
+                            element={
+                                <Suspense fallback={<Preloder />}>
+                                    <FullProduct />
+                                </Suspense>
+                            }
+                        />
+                        <Route
+                            path="*"
+                            element={
+                                <Suspense fallback={<Preloder />}>
+                                    <NotFound />
+                                </Suspense>
+                            }
+                        />
                     </Routes>
                 </div>
             </div>

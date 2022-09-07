@@ -55,7 +55,7 @@ const Cart: React.FC = () => {
                                 stroke-linejoin="round"
                             />
                         </svg>
-                        Корзина
+                        Cart
                     </h2>
                     <div className="cart__clear">
                         <svg
@@ -93,7 +93,7 @@ const Cart: React.FC = () => {
                                 stroke-linejoin="round"
                             />
                         </svg>
-                        <button onClick={onClickClear}>Очистить корзину</button>
+                        <button onClick={onClickClear}>Empty trash</button>
                     </div>
                 </div>
                 <div className="content__items">
@@ -105,11 +105,11 @@ const Cart: React.FC = () => {
                     <div className="cart__bottom-details">
                         <span>
                             {' '}
-                            Всего товаров: <b>{totalCount} шт.</b>{' '}
+                            Total products: <b>{totalCount} pieces</b>{' '}
                         </span>
                         <span>
                             {' '}
-                            Сумма заказа: <b>{totalPrice} ₽</b>{' '}
+                            Order price: <b>{totalPrice} ₽</b>{' '}
                         </span>
                     </div>
                     <div className="cart__bottom-buttons">
@@ -129,7 +129,7 @@ const Cart: React.FC = () => {
                                 />
                             </svg>
 
-                            <span>Вернуться назад</span>
+                            <span>Сome back</span>
                         </Link>
                         <div className="button pay-btn">
                             <svg
@@ -153,7 +153,7 @@ const Cart: React.FC = () => {
                                     />
                                 </g>
                             </svg>
-                            <span>Оплатить сейчас</span>
+                            <span>Pay now</span>
                         </div>
                     </div>
                 </div>

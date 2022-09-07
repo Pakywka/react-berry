@@ -5,8 +5,8 @@ const NotFoundBlock: React.FC = () => {
     return (
         <div className={styles.root}>
             <span>😕</span>
-            <h2>Ничего не найдено</h2>
-            <p className={styles.description}>К сожалению, данная страница отсутвует</p>
+            <h2>Nothing found</h2>
+            <p className={styles.description}>Sorry, this page is missing.</p>
         </div>
     );
 };

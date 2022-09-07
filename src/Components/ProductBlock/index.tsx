@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 import { addItem } from '../../redux/slices/cart/slice';
 
-const typeNames: string[] = ['тонкое', 'традиционное'];
+const typeNames: string[] = ['Type 1', 'Type 2'];
 
 type ProductBlockProps = {
     id: number;
@@ -69,7 +69,7 @@ const ProductBlock: React.FC<ProductBlockProps> = ({
                             key={i}
                             onClick={() => setActiveSize(i)}
                             className={activeSize === i ? 'active' : ''}>
-                            {size} см.
+                            Size {size}
                         </li>
                     ))}
                 </ul>
@@ -88,7 +88,7 @@ const ProductBlock: React.FC<ProductBlockProps> = ({
                             fill="white"
                         />
                     </svg>
-                    <span>Добавить</span>
+                    <span>Add</span>
                     {addedCount > 0 && <i>{addedCount}</i>}
                 </button>
             </div>
